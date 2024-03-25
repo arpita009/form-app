@@ -5,3 +5,18 @@
 .mt-2 {
     margin-top: 2rem;
 }
+.form-err {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pl-4 {
+    padding-left: 4rem;
+}
+
+.pl-6 {
+    padding-left: 6rem;
+}
+.h-2 {
+    height: 2rem;
+}
