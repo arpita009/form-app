@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useRef} from "react";
 import {validateEmail, validatePassword} from "../helper/validation";
 import './Form.css';
 
@@ -11,6 +11,10 @@ export default function Form(){
         email: '',
         password: ''
     });
+
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+
     const handleInput =(e) => {
         const { name, value } = e.target;
         setFormData({
@@ -42,8 +46,10 @@ export default function Form(){
 
     const handleValidation = () => {
         if (!validateEmail(formData.email)) {
+            emailRef.current.focus();
             setFormError({...formError, email: 'not a valid email!'});
         }else if (!validatePassword(formData.password)) {
+            passwordRef.current.focus();
             setFormError({...formError, password: 'not a valid password!'});
         }
     }
@@ -58,6 +64,7 @@ export default function Form(){
                        id='email'
                        name='email'
                        className='ml-2'
+                       ref={emailRef}
                        onChange={handleInput}
                        onBlur={handleValidation}
                 />
@@ -70,6 +77,7 @@ export default function Form(){
                        id='password'
                        name='password'
                        className='ml-2'
+                       ref={passwordRef}
                        onChange={handleInput}
                        onBlur={handleValidation}
                 />
