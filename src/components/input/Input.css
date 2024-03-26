@@ -1,0 +1,19 @@
+.red-border {
+   border: 1px solid red;
+}
+
+.ml-2 {
+   margin-left: 2rem;
+}
+
+.shake {
+   animation: shakeInput 0.2s linear 0s 3;
+}
+
+@keyframes shakeInput {
+   0% { transform: translateX(0); }
+   25% { transform: translateX(-5px); }
+   50% { transform: translateX(5px); }
+   75% { transform: translateX(-5px); }
+   100% { transform: translateX(0); }
+}
