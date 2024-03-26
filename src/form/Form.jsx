@@ -64,7 +64,7 @@ export default function Form(){
                     type='email'
                     name='email'
                     id='email'
-                    inputRef={emailRef}
+                    ref={emailRef}
                     handleInput={handleInput}
                     handleValidation={handleValidation}
                     className='ml-2'
@@ -77,7 +77,7 @@ export default function Form(){
                     type='password'
                     name='password'
                     id='password'
-                    inputRef={passwordRef}
+                    ref={passwordRef}
                     handleInput={handleInput}
                     handleValidation={handleValidation}
                     className='ml-2'

@@ -1,6 +1,6 @@
-import {useState} from "react";
+import React,{useState} from "react";
 
-const Input = ({type, name, id, inputRef, handleInput,handleValidation}) => {
+const Input = React.forwardRef(({type, name, id, handleInput,handleValidation},ref) => {
     const [text, setText] = useState('');
     const handleTextChange = (e) => {
         const { value } = e.target;
@@ -13,7 +13,7 @@ const Input = ({type, name, id, inputRef, handleInput,handleValidation}) => {
                 type={type}
                 name={name}
                 id={id}
-                ref={inputRef}
+                ref={ref}
                 value={text}
                 onChange={handleTextChange}
                 onBlur={handleValidation}
@@ -22,6 +22,6 @@ const Input = ({type, name, id, inputRef, handleInput,handleValidation}) => {
             />
         </>
     )
-}
+});
 
 export default Input;
