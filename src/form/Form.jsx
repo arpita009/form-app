@@ -1,6 +1,7 @@
 import {useState, useRef} from "react";
 import {validateEmail, validatePassword} from "../helper/validation";
 import './Form.css';
+import Input from "../components/input/Input.jsx";
 
 export default function Form(){
     const[formData, setFormData] = useState({
@@ -15,8 +16,7 @@ export default function Form(){
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const handleInput =(e) => {
-        const { name, value } = e.target;
+    const handleInput =(name, value) => {
         setFormData({
             ...formData,
             [name]: value
@@ -48,7 +48,8 @@ export default function Form(){
         if (!validateEmail(formData.email)) {
             emailRef.current.focus();
             setFormError({...formError, email: 'not a valid email!'});
-        }else if (!validatePassword(formData.password)) {
+        }
+        if (formData.password && !validatePassword(formData.password)) {
             passwordRef.current.focus();
             setFormError({...formError, password: 'not a valid password!'});
         }
@@ -59,27 +60,27 @@ export default function Form(){
             <h1>Form app</h1>
             <div className='email-container'>
                 <label htmlFor='email' className='ml-2'>email</label>
-                <input type='text'
-                       placeholder='email'
-                       id='email'
-                       name='email'
-                       className='ml-2'
-                       ref={emailRef}
-                       onChange={handleInput}
-                       onBlur={handleValidation}
+                <Input
+                    type='email'
+                    name='email'
+                    id='email'
+                    inputRef={emailRef}
+                    handleInput={handleInput}
+                    handleValidation={handleValidation}
+                    className='ml-2'
                 />
                 <p className='form-err pl-4 h-2'>{formError.email}</p>
             </div>
             <div className='password-container'>
                 <label htmlFor='password'>password</label>
-                <input type='password'
-                       placeholder='password'
-                       id='password'
-                       name='password'
-                       className='ml-2'
-                       ref={passwordRef}
-                       onChange={handleInput}
-                       onBlur={handleValidation}
+                <Input
+                    type='password'
+                    name='password'
+                    id='password'
+                    inputRef={passwordRef}
+                    handleInput={handleInput}
+                    handleValidation={handleValidation}
+                    className='ml-2'
                 />
                 <p className='form-err pl-6 h-2'>{formError.password}</p>
             </div>

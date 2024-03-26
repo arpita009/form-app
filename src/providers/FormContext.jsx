@@ -1,4 +1,4 @@
 import {createContext} from "react";
 
-const FormContext = createContext([]);
+const FormContext = createContext({});
 export default FormContext;
